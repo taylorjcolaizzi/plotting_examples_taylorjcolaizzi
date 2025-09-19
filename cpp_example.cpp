@@ -4,8 +4,6 @@
 // root [0] .L cpp_example.cpp  or .L cpp_example.cpp+
 // root [1] cpp_example
 
-// add comment here
-
 #include "TApplication.h"
 #include "TROOT.h"
 #include "TH1F.h"
