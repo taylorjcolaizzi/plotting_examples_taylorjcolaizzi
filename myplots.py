@@ -5,6 +5,8 @@ import numpy as np
 import random
 import math
 
+from matplotlib.offsetbox import AnchoredText
+
 N_points = 10000
 n_bins = 100
 xmin = 50
@@ -34,6 +36,17 @@ plt.ylabel('Frequency')
 plt.errorbar(bc, yb, yerr=err, color="b", label = 'hist1', linestyle = 'none', fmt = '.') # now we are basically plotting a scatterplot with errorbars. No lines though
 plt.title('random gauss')
 plt.legend()
+
+# adding a text box with mean and sigma. from copilot
+textstr = '\n'.join((
+    r'$\mathrm{Entries}=%d$' % (N_points, ),
+    r'$\mathrm{Mean}=%.2f$' % (np.mean(normal), ),
+    r'$\mathrm{Std Dev}=%.2f$' % (np.std(normal), )))
+at = AnchoredText(textstr, prop=dict(size=10), frameon=True, loc='right')
+at.patch.set_boxstyle("round,pad=0.3,rounding_size=0.2")
+plt.gca().add_artist(at)
+
+# back to my code...
 plt.tight_layout()
 plt.show()
 plt.savefig('canvas1_py.png')
@@ -41,3 +54,15 @@ plt.savefig('canvas1_py.png')
 plt.clf()
 # ~~~~~~~~~~~~~~~~~~~~ making second plot ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+fig, axes = plt.subplots(2,2, figsize = (16, 16))
+
+axes = axes.flatten() # make it easier to index
+axes[0].errorbar(bc, yb, yerr=err, color="b", label = 'hist1', linestyle = 'none', fmt = '.') # now we are basically plotting a scatterplot with errorbars. No lines though
+axes[0].set_title('random gauss')
+axes[0].set_xlabel('x')
+axes[0].set_ylabel('Frequency')
+axes[0].legend()
+
+plt.tight_layout()
+plt.show()
+plt.savefig("canvas2_py.pdf")
