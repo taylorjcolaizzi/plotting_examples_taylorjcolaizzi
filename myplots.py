@@ -20,18 +20,24 @@ rng = np.random.default_rng(2025) # year is seed
 # bars, not the histogram, so we'll need to calculate that
 # ourself via matplotlib.
 
-fig = plt.figure()
-
 normal = rng.standard_normal(N_points)*sigma + mean
-
-plt.hist(normal, bins=n_bins, range=(xmin, xmax), histtype='step', label='normal distribution')
-plt.title('random gauss')
+plt.figure()
+bins = plt.hist(normal, bins=n_bins, range=(xmin, xmax), histtype='step', label='normal distribution')
+plt.clf()
+yb = bins[0]
+xb = bins[1]
+err = np.sqrt(yb)
+#Calculate bin centers (you can probably find a smarter way to do this!)
+bc=(xb[1:]-xb[:-1])/2+xb[:-1] # first minus last /2 (average) + last???
 plt.xlabel('x')
-plt.ylabel('frequency')
+plt.ylabel('Frequency')
+plt.errorbar(bc, yb, yerr=err, color="b", label = 'hist1', linestyle = 'none', fmt = '.') # now we are basically plotting a scatterplot with errorbars. No lines though
+plt.title('random gauss')
 plt.legend()
 plt.tight_layout()
 plt.show()
 plt.savefig('canvas1_py.png')
 
 plt.clf()
+# ~~~~~~~~~~~~~~~~~~~~ making second plot ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
