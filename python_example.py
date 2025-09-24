@@ -6,7 +6,7 @@ def python_example(samples=10000):
     #r.gStyle.SetOptStat(0)  # turn off default stats box in histograms
     
     tr = r.TRandom3()
-    hist1 = r.TH1F("hist1","random gauss;x;frequency",100,50,150)
+    hist1 = r.TH1F("hist1","random gauss;x;frequency",100,50,150) # axis name, plot name, bins, xmin, xmax
     fpeak = r.TF1("fpeak","exp(-0.5*(x-[0])*(x-[0])/[1]/[1])",50,150)
     fpeak.SetParameters(100,6)
     hist1.FillRandom("fpeak",samples)
