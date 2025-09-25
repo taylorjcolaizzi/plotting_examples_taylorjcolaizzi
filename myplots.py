@@ -63,6 +63,43 @@ axes[0].set_xlabel('x')
 axes[0].set_ylabel('Frequency')
 axes[0].legend()
 
+textstr = '\n'.join((
+    r'$\mathrm{Entries}=%d$' % (N_points, ),
+    r'$\mathrm{Mean}=%.2f$' % (np.mean(normal), ),
+    r'$\mathrm{Std Dev}=%.2f$' % (np.std(normal), )))
+at = AnchoredText(textstr, prop=dict(size=10), frameon=True, loc='right')
+at.patch.set_boxstyle("round,pad=0.3,rounding_size=0.2")
+plt.gca().add_artist(at)
+
+# now do the legends, I guess
+# more from copilot!
+texts = [
+    "Panel A\nLine 2\nLine 3",
+    "Panel B\nLine 2\nLine 3",
+    "Panel C\nLine 2\nLine 3",
+    "Panel D\nLine 2\nLine 3",
+]
+for ax, txt in zip(axes, texts):
+    ax.set_title("Demo")
+
+    at = AnchoredText(
+        txt,
+        loc='ight',        # choose the corner
+        prop=dict(size=10),
+        frameon=True,             # draw a frame
+        borderpad=0.4,
+        pad=0.2
+    )
+    # Customize the patch (box)
+    at.patch.set_boxstyle("round,pad=0.4")
+    at.patch.set_edgecolor("black")
+    at.patch.set_linewidth(1.5)
+    at.patch.set_facecolor("white")
+    at.set_zorder(10)
+
+    ax.add_artist(at)
+
+# back to me writing
 plt.tight_layout()
 plt.show()
 plt.savefig("canvas2_py.pdf")
