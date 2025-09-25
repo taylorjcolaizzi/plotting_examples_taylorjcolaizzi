@@ -70,8 +70,8 @@ void cpp_example(int samples=10000){
   tc2->Update();
 
   // example for saving our plot outputs in different formats
-  tc1->SaveAs("canvas1.png");
-  tc2->SaveAs("canvas2.pdf");
+  // tc1->SaveAs("canvas1.png");
+  tc2->SaveAs("canvas2d_cpp.png");
   
 }
 
