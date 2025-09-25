@@ -90,7 +90,7 @@ int main(int argc, char **argv) {
   // view graphics in ROOT if we are in an interactive session
   if (!gROOT->IsBatch()) {
       cout << "To exit, quit ROOT from the File menu of the plot (or use control-C)" << endl;
-    theApp.SetIdleTimer(30,".q"); // set up a failsafe timer to end the program
+    theApp.SetIdleTimer(60,".q"); // set up a failsafe timer to end the program
     theApp.Run(true);
   }
   return 0;

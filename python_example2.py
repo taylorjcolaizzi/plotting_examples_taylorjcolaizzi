@@ -52,8 +52,8 @@ def python_example(samples=10000):
     input("hit 'return' to continue")
 
     # save our plot outputs
-    tc1.SaveAs("canvas1.png")
-    tc2.SaveAs("canvas2.pdf")
+    # tc1.SaveAs("canvas1.png")
+    tc2.SaveAs("canvas2d_py.png")
 
 if __name__ == '__main__':
     samples=10000
